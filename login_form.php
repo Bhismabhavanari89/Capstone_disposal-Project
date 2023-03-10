@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
    }
    else if(mysqli_num_rows($fresult) > 0){
       $row = mysqli_fetch_array($fresult);
-      $_SESSION['id'] = $row['id'];
+      $_SESSION['id'] = $row['faculty_id'];
       header('location:./Faculty/home.php');
    }
    else if(mysqli_num_rows($cresult) > 0){

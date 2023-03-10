@@ -8,13 +8,12 @@ if(!isset($_SESSION['id'])){
 }
 
 $id = $_SESSION['id'];
-$faculty = "SELECT * from faculty where id = $id";
+$faculty = "SELECT * from faculty where faculty_id = $id";
 $result = mysqli_query($conn, $faculty);
 $row = $result->fetch_assoc();
 
 // print_r($row);
-$email = $row['email'];
-$request = "SELECT * from request where facultyemail = '$email'";
+$request = "SELECT * from request where f_id = $id";
 $reqrequest = mysqli_query($conn, $request);
 $reqrow = $reqrequest->fetch_assoc();
 

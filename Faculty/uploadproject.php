@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <?php
 
 include('../config.php');
@@ -11,11 +14,13 @@ $query = "SHOW COLUMNS FROM count";
 $restudent = mysqli_query($conn,$query);
 // print_r($restudent);
 if(isset($_POST['submit'])){
-
+    echo $_POST['select'];
     $name = $_POST['pname'];
     $topic = $_POST['topic'];
     $members = $_POST['members'];
     $f_id = $_SESSION['id'];
+    $value= $_POST['select'];
+    echo $value;
 
     // file values
     $file = $_FILES['file']['name'];
@@ -34,17 +39,17 @@ if(isset($_POST['submit'])){
     $select = "INSERT INTO `projects`(`name`, `topic`, `f_id`,noofstudents,file_name,type,size) VALUES ('$name','$topic',$f_id,$members,'$final_file','$file_type','$new_size')";
     move_uploaded_file($file_loc,"../uploads/".$file);
     $result = mysqli_query($conn, $select);
- 
+    $project = "select $value from count where ";
     if($result){
         ?>
-        <script>
-            alert("Project Uploaded");
-            // window.location('http://localhost/project/Faculty/home.php');
-        </script>
-        <?php
-        header('location:./home.php');
-        
-    }
+            <script>
+                alert("Project Uploaded");
+                // window.location('http://localhost/project/Faculty/home.php');
+            </script>
+            <?php
+            header('location:./home.php');
+            
+        }
  };
 ?>
 
@@ -60,16 +65,19 @@ if(isset($_POST['submit'])){
     <input type="text" name="topic" id=""><br>
     <label for="">Number of Team members for project</label>
     <input type="number" name="members" id="" min="1"><br>
-    <select name="select_box" class="form-select" id="select_box">
-                        <option value="">Select Student</option>
-                        <?php 
+    
+
+
+<select id="select_page" name="select" style="width:200px;" class="operator"> 
+         <option value="">Select a Page...</option>
+         <?php 
                         foreach($restudent as $rowmember)
                         {
                             if($rowmember['Field']==='id' or $rowmember['Field']==='faculty_id' or $rowmember['Field']==='created_at' or $rowmember['Field']==='updated_at'){
                                 continue;
                             }
                             else{
-                                echo $rowmember['Field'];
+                                // echo $rowmember['Field'];
                                 // echo '<option value="'.$rowmember.'">'.$rowmember.'</option>';
                                 echo '<option value="'.$rowmember['Field'].'">'.$rowmember['Field'].'</option>';
                             }
@@ -80,8 +88,12 @@ if(isset($_POST['submit'])){
 
                             
                         }
-                        ?>  
-                    <!-- </select> -->
+                        ?>
+  </select><br>
+
+
+
+                    
 
 
 
@@ -94,3 +106,9 @@ if(isset($_POST['submit'])){
 
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+//change selectboxes to selectize mode to be searchable
+   $("select").select2();
+});
+</script>
