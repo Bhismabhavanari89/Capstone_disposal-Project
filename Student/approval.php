@@ -30,9 +30,9 @@ if(isset($_POST['submit'])){
   $mail->Port = 587;
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPAuth = true;
-  $mail->Username = 'b.v.p.sbhismarao@gmail.com';
-  $mail->Password = 'uxmlivagyobdiuns';
-  $mail->setFrom('b.v.p.sbhismarao@gmail.com', 'Project');
+  $mail->Username = 'mail@gmail.com';
+  $mail->Password = 'password';
+  $mail->setFrom('mailo@gmail.com', 'Project');
   $mail->addReplyTo('replyto@example.com', 'First Last');
     $pid = $_POST['id'];
     $select = "UPDATE list SET status='accepted' WHERE member = '$id' and pid = '$pid'";
