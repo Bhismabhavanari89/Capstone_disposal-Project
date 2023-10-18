@@ -38,6 +38,12 @@
                 <a class="nav-link" href="requestfromstudent.php">Request for Projects</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="upload.php">Upload Report</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="marks.php">Assign Marks</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="../logout.php">Logout</a>
               </li>
             </ul>

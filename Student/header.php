@@ -35,7 +35,13 @@
                 <a class="nav-link" href="./request.php">Request For Project</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="./approval.php">Approval For Project</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">Upload Document</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./issue.php">Issue With Project</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../logout.php">Logout</a>

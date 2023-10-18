@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
             // echo $row['id'];
             ?>
     <h1>Existing Values</h1>
-    ProjectId:<?=$row['id']?><br>
+    ProjectId:<?=$row['project_id']?><br>
     Project Name:<?=$row['name']?><br>
     Project Topic:<?=$row['topic']?><br>
     <a href="../uploads/<?=$row['file_name']?>">Click Download</a>

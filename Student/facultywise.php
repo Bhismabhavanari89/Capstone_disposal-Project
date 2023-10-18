@@ -7,7 +7,7 @@ if(!isset($_SESSION['id'])){
    header('location:login_form.php');
 }
 
-$projects = "SELECT email,id FROM `faculty` ORDER BY email";
+$projects = "SELECT email,faculty_id FROM `faculty` ORDER BY email";
 $result = mysqli_query($conn, $projects);
 ?>
 <table>
@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $projects);
             ?>
       
              <tr>
-    <td><a href="./facultywiseview.php?id=<?=$row['id']?>"><?=$row['email']?></a></td>
+    <td><a href="./facultywiseview.php?id=<?=$row['faculty_id']?>"><?=$row['email']?></a></td>
         <?php
 
         }

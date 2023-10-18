@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
    }
 }
 $id = $_SESSION['id'];
-$user = "SELECT * FROM user_form where id = $id";
+$user = "SELECT * FROM user_form where registration_no = '$id'";
 $result = mysqli_query($conn, $user);
 $row = $result->fetch_assoc();
 // print_r($row);

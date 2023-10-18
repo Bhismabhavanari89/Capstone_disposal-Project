@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($result) > 0){
 
       $row = mysqli_fetch_array($result);
-      $_SESSION['id'] = $row['id'];
+      $_SESSION['id'] = $row['registration_no'];
       header('location:./Student/home.php');
      
    }
@@ -75,10 +75,12 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="email" name="email" required placeholder="enter your email">
+
+<!-- pattern=".+@srmap.edu.in" -->
+      <input type="text" name="email" required placeholder="enter your email" >
       <input type="password" name="password" required placeholder="enter your password">
       <input type="submit" name="submit" value="login now" class="form-btn">
-      <p>don't have an account? <a href="register_form.php">register now</a></p>
+      <p>Don't have an account? <a href="register_form.php">Register now</a></p>
    </form>
 
 </div>

@@ -53,9 +53,9 @@ if(isset($_POST['submit'])){
         while($row = $result->fetch_assoc()){
             // echo $row['id'];
             ?>
-            <form action="./updateassign.php?id=<?=$row['id']?>" method="post">
+            <form action="./updateassign.php?id=<?=$row['project_id']?>" method="post">
              <tr>
-    <td><?=$row['id']?></td>
+    <td><?=$row['project_id']?></td>
     <td><?=$row['name']?></td>
     <td><?=$row['topic']?></td>
     <td><button type="submit" onclick="">Update<?php $_SESSION['piid']= $row['id']?></button></td>

@@ -7,7 +7,7 @@ if(!isset($_SESSION['id'])){
    header('location:login_form.php');
 }
 $topic = $_GET['topic'];
-$projects = "SELECT * FROM projects p ,faculty f where p.topic='$topic' and p.f_id = f.id";
+$projects = "SELECT * FROM projects p ,faculty f where p.topic='$topic' and p.f_id = f.faculty_id";
 $result = mysqli_query($conn, $projects);
 ?>
 <table>

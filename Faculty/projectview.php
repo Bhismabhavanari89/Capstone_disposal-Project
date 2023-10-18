@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $projects);
             ?>
             <form action="./modify.php" method="post">
              <tr>
-    <td><?=$row['id']?></td>
+    <td><?=$row['project_id']?></td>
     <td><?=$row['name']?></td>
     <td><?=$row['topic']?></td>
     <td><button type="submit" onclick="">Edit<?php $_SESSION['pid']= $row['id']?></button></td>

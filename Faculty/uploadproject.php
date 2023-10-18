@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
     $members = $_POST['members'];
     $f_id = $_SESSION['id'];
     $value= $_POST['select'];
-    echo $value;
+    // echo $value;
 
     // file values
     $file = $_FILES['file']['name'];
@@ -36,10 +36,21 @@ if(isset($_POST['submit'])){
  $new_file_name = strtolower($file);
  /* make file name in lower case */
  $final_file=str_replace(' ','-',$new_file_name);
-    $select = "INSERT INTO `projects`(`name`, `topic`, `f_id`,noofstudents,file_name,type,size) VALUES ('$name','$topic',$f_id,$members,'$final_file','$file_type','$new_size')";
+    $project = "select $value from count where f_id=$f_id";
+    $presult = mysqli_query($conn,$project);
+    print_r($presult);
+    $pro = $presult->fetch_assoc();
+    print_r($pro);
+    // echo $pro[$value];
+    $countpro = $pro[$value]+1;
+    // echo $countpro;
+    $updatecount = "update count set $value=$countpro where f_id=$f_id";
+    $uresult = mysqli_query($conn,$updatecount);
+    $project_id = $value."_".strval($f_id)."_".strval($countpro);
+    //echo $project_id;
+    $select = "INSERT INTO `projects`(`name`, `topic`, `f_id`,noofstudents,file_name,type,size,project_id) VALUES ('$name','$topic',$f_id,$members,'$final_file','$file_type','$new_size','$project_id')";
     move_uploaded_file($file_loc,"../uploads/".$file);
     $result = mysqli_query($conn, $select);
-    $project = "select $value from count where ";
     if($result){
         ?>
             <script>
@@ -50,6 +61,7 @@ if(isset($_POST['submit'])){
             header('location:./home.php');
             
         }
+    
  };
 ?>
 
@@ -67,13 +79,13 @@ if(isset($_POST['submit'])){
     <input type="number" name="members" id="" min="1"><br>
     
 
-
+<label for="">Select Project</label>
 <select id="select_page" name="select" style="width:200px;" class="operator"> 
-         <option value="">Select a Page...</option>
+         <option value="">Select a Project...</option>
          <?php 
                         foreach($restudent as $rowmember)
                         {
-                            if($rowmember['Field']==='id' or $rowmember['Field']==='faculty_id' or $rowmember['Field']==='created_at' or $rowmember['Field']==='updated_at'){
+                            if($rowmember['Field']==='id' or $rowmember['Field']==='f_id' or $rowmember['Field']==='created_at' or $rowmember['Field']==='updated_at'){
                                 continue;
                             }
                             else{

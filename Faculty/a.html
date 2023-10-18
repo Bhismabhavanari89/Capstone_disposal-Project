@@ -108,3 +108,66 @@ if($result){
        header('location:./home.php');
        
    }
+
+
+
+   <select name="<?=$m?>"  id="country">
+      <option value="">Select Student</option>
+      <?php 
+      foreach($restudent as $rowmember)
+      {
+          //$a = $rowmember['email'];
+          echo '<option value="'.$rowmember["email"].'">'.$rowmember["email"].'</option>';
+          
+      }
+      ?>  
+  </select><br>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  <select id="select_page" style="width:200px;" class="operator"> 
+<option value="">Select a Page...</option>
+<?php 
+    foreach($restudent as $rowmember)
+    {
+            
+      //$a = $rowmember['email'];
+      echo '<option value="'.$rowmember["email"].'">'.$rowmember["email"].'</option>';
+          
+        
+    }
+    ?>
+</select>
+
+
+if($m+1==$memberlist){
+   ?>
+       <script>
+           alert("Project Uploaded");
+           // window.location('http://localhost/project/Faculty/home.php');
+       </script>
+       <?php
+       header('location:./home.php');
+       
+   }
+
+
+
+   if(isset($_POST['submit'])){
+      $fid = $_POST['fid'];
+      $issue = $_POST['issue'];
+      $select = "INSERT INTO issues (registration_no, faculty_id, issue) values('$id',$fid,$issue)";
+      $result = mysqli_query($conn, $select);
+      if($result){
+          ?>
+          <script>
+              alert("Issue Posted")
+      window.location.replace("./home.php");
+      </script>
+      <?php
+      }
+  }
+
+
+  CREATE TABLE $col ( id int AUTO_INCREMENT PRIMARY KEY, f_id int, p_id varchar(225), file_name varchar(225), created_at Timestamp DEFAULT CURRENT_TIMESTAMP, updated_at Timestamp DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP );";
+   
