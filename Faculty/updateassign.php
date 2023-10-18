@@ -53,9 +53,9 @@ if(isset($_POST['submit'])){
   $mail->Port = 587;
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPAuth = true;
-  $mail->Username = 'b.v.p.sbhismarao@gmail.com';
-  $mail->Password = 'uxmlivagyobdiuns';
-  $mail->setFrom('b.v.p.sbhismarao@gmail.com', 'Project');
+  $mail->Username = '@gmail.com';
+  $mail->Password = 'password';
+  $mail->setFrom('mail@gmail.com', 'Project');
   $mail->addReplyTo('replyto@example.com', 'First Last');
     //  $arraylist = array();
      $m = 1;
